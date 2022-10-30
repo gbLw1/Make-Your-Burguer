@@ -8,6 +8,9 @@
             <li>.NET C#</li>
             <li>Python</li>
         </ul>
+        <div>
+            <button @click="showEmail">{{ textoBotao }}</button>
+        </div>
         <p v-show="mostrar_email">Mande uma mensagem para: {{ email }}</p>
         <p>Para acessar meu portfólio <a v-bind:href="link_portfolio" target="_blank">basta clicar aqui</a></p>
         <Picture />
@@ -27,8 +30,15 @@ export default {
         return {
             esta_trabalhando: true, 
             email: "gbl@mail.com",
-            mostrar_email: true,
-            link_portfolio: 'https://github.com/gbLw1'
+            mostrar_email: false,
+            link_portfolio: 'https://github.com/gbLw1',
+            textoBotao: 'Mostrar e-mail'
+        }
+    },
+    methods: {
+        showEmail() {
+            this.mostrar_email = !this.mostrar_email;
+            (!this.mostrar_email) ? this.textoBotao = "Mostrar e-mail" : this.textoBotao = "Ocultar e-mail"
         }
     }
 }
